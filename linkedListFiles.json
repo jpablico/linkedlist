@@ -1,0 +1,11 @@
+{
+  "node.mjs": {
+    "content": "export class Node {\n  constructor(value) {\n    this.value = value;\n    this.nextNode = null;\n  }\n}"
+  },
+  "linkedList.mjs": {
+    "content": "import { Node } from './node.mjs';\n\nexport class LinkedList {\n  constructor() {\n    this.head = null;\n  }\n\n  append(value) {\n    const newNode = new Node(value);\n    if (!this.head) {\n      this.head = newNode;\n      return;\n    }\n    let current = this.head;\n    while (current.nextNode) {\n      current = current.nextNode;\n    }\n    current.nextNode = newNode;\n  }\n\n  prepend(value) {\n    const newNode = new Node(value);\n    newNode.nextNode = this.head;\n    this.head = newNode;\n  }\n}"
+  },
+  "main.mjs": {
+    "content": "import { LinkedList } from './linkedList.mjs';\n\nconst list = new LinkedList();\nlist.append(1);\nlist.append(2);\nlist.prepend(0);\n\nconsole.log(list);"
+  }
+}
